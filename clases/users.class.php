@@ -15,15 +15,17 @@ class users extends conexion{
     
     public function listaUsers($pagina = 1){
         $inicio = 0;
-        $cantidad = 100;
+        $cantidad = 1000;
         if($pagina > 1){
             $inicio = ($cantidad * ($pagina - 1)) + 1;
             $cantidad = $cantidad * $pagina;
         }
-        $query = "SELECT id,name,email FROM " . $this->table . " limit $inicio,$cantidad";
+        $query = "SELECT id, name, email, role, status FROM " . $this->table . " limit $inicio,$cantidad";
         $datos = parent::obtenerDatos($query);
         return ($datos);
     }
+
+    
 
     public function obtenerUsers($id){
         $query = "SELECT * FROM " . $this->table ." WHERE id = '$id'";
@@ -266,4 +268,3 @@ class users extends conexion{
         return $resultado;
     }
 }
-?>

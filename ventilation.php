@@ -18,6 +18,12 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
         header("content-type: applications/json");
         echo json_encode($datosUsers);
         http_response_code(200);
+    }else if(isset($_GET["buscar"])){
+        $buscar = $_GET["buscar"];
+        $resultados = $_ventilation->buscarVentilation($buscar);
+        header("content-type: applications/json");
+        echo json_encode($resultados);
+        http_response_code(200);
     }
 }else if($_SERVER['REQUEST_METHOD'] == "POST"){
     //recibimos los datos enviados 

@@ -19,7 +19,7 @@ class auth extends conexion{
             if($datos){
                 //verificar si la contraseña es igual
                 if($password == $datos[0]['password']){
-                    if($datos[0]['status'] == "true"){
+                    if($datos[0]['status'] == "Activo"){
                         //crear el token
                         $verificar = $this->insertarToken($datos[0]['id']);
                         if($verificar){

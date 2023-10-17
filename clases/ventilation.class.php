@@ -207,10 +207,10 @@ class ventilation extends conexion
         }
     }
 
-    public function buscarVentilation($buscar) {
-        $query = "SELECT * FROM " . $this->table . " WHERE date_init LIKE '%" . $buscar . "%' OR date_end LIKE '%" . $buscar . "%'";
+    public function buscarVentilation($start_date, $end_date)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE date_init >= '" . $start_date . "' AND date_end <= '" . $end_date . "';";
         $resultado = parent::obtenerDatos($query);
         return $resultado;
     }
 }
-?>

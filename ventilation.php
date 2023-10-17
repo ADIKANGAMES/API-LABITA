@@ -18,9 +18,10 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
         header("content-type: applications/json");
         echo json_encode($datosUsers);
         http_response_code(200);
-    }else if(isset($_GET["buscar"])){
-        $buscar = $_GET["buscar"];
-        $resultados = $_ventilation->buscarVentilation($buscar);
+    }else if(isset($_GET["start_date"]) && isset($_GET["end_date"])){
+        $start_date = $_GET["start_date"];
+        $end_date = $_GET["end_date"];
+        $resultados = $_ventilation->buscarVentilation($start_date, $end_date);
         header("content-type: applications/json");
         echo json_encode($resultados);
         http_response_code(200);
